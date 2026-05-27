@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho Sustentável</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Música -->
+    <audio autoplay loop controls>
+        <source src="audio/agro.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- MENU -->
+    <header>
+        <h1>🌱 Agrinho Sustentável</h1>
+
+        <nav>
+            <a href="#sobre">Sobre</a>
+            <a href="#artigos">Artigos</a>
+            <a href="#jogos">Jogos</a>
+            <a href="#novidades">Novidades</a>
+            <a href="#galeria">Galeria</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="overlay">
+            <h2>Construindo um Agro Mais Sustentável</h2>
+
+            <p>
+                Tecnologia, preservação ambiental e inovação no campo.
+            </p>
+
+            <button onclick="mostrarMensagem()">
+                Saiba Mais
+            </button>
+        </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="container">
+        <h2>🌎 O que é Sustentabilidade no Agro?</h2>
+
+        <p>
+            A sustentabilidade no agronegócio busca produzir alimentos
+            preservando a natureza, economizando água, reduzindo poluição
+            e utilizando tecnologias inteligentes no campo.
+        </p>
+
+        <p>
+            Hoje o agro utiliza energia renovável, agricultura digital,
+            inteligência artificial e manejo sustentável para aumentar
+            a produtividade sem destruir o meio ambiente.
+        </p>
+    </section>
+
+    <!-- ARTIGOS -->
+    <section id="artigos" class="container">
+        <h2>📚 Artigos e Informações</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>🌾 Agricultura Digital</h3>
+
+                <p>
+                    Sensores, drones e inteligência artificial ajudam
+                    agricultores a economizar água e aumentar a produção.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>💧 Uso Consciente da Água</h3>
+
+                <p>
+                    Sistemas modernos de irrigação evitam desperdício
+                    e preservam os recursos naturais.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>☀️ Energia Renovável</h3>
+
+                <p>
+                    Fazendas utilizam energia solar e biogás para
+                    reduzir impactos ambientais.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- JOGOS -->
+    <section id="jogos" class="container">
+        <h2>🎮 Jogos Educativos</h2>
+
+        <div class="games">
+
+            <!-- Quiz -->
+            <div class="game-box">
+                <h3>Quiz Sustentável</h3>
+
+                <p>
+                    Qual prática ajuda o meio ambiente?
+                </p>
+
+                <button onclick="quiz('a')">
+                    Queimar florestas
+                </button>
+
+                <button onclick="quiz('b')">
+                    Plantar árvores
+                </button>
+
+                <p id="resultado"></p>
+            </div>
+
+            <!-- Clique -->
+            <div class="game-box">
+                <h3>🌱 Plante Árvores</h3>
+
+                <button onclick="plantar()">
+                    Plantar 🌳
+                </button>
+
+                <h1 id="contador">0</h1>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- NOVIDADES -->
+    <section id="novidades" class="container">
+        <h2>📰 Novidades do Agro Sustentável</h2>
+
+        <ul>
+            <li>🚜 Uso de IA para reduzir desperdícios no campo</li>
+            <li>🌎 Crescimento da agricultura regenerativa</li>
+            <li>☀️ Fazendas movidas por energia solar</li>
+            <li>💧 Novas tecnologias para economizar água</li>
+            <li>🌱 Recuperação de áreas degradadas</li>
+        </ul>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" class="container">
+        <h2>📸 Galeria</h2>
+
+        <div class="galeria">
+
+            <img src="imagens/agro1.jpg">
+            <img src="imagens/agro2.jpg">
+            <img src="imagens/sustentabilidade.jpg">
+
+        </div>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer>
+        <p>
+            Projeto Agrinho 2026 🌱
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
