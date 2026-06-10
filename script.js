@@ -1,58 +1,35 @@
-// Captura dos elementos da interface via DOM
-const selectIrrigacao = document.getElementById('select-irrigacao');
-const selectPragas = document.getElementById('select-pragas');
-const selectSolo = document.getElementById('select-solo');
+document.getElementById('btn-perguntar').addEventListener('click', enviarPergunta);
+document.getElementById('input-pergunta').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') enviarPergunta();
+});
 
-const txtFinanceiro = document.getElementById('txt-financeiro');
-const txtSustentavel = document.getElementById('txt-sustentavel');
-const mensagemFeedback = document.getElementById('mensagem-feedback');
+function enviarPergunta() {
+    const input = document.getElementById('input-pergunta');
+    const chatBox = document.getElementById('chat-box');
+    const textoUsuario = input.value.trim().toLowerCase();
 
-// Função principal que calcula o equilíbrio do ecossistema agrícola
-function calcularImpacto() {
-    // Valores iniciais padrão
-    let lucro = 60000;
-    let sustentabilidade = 50;
+    if (textoUsuario === "") return;
 
-    // 1. Verificação da Irrigação
-    if (selectIrrigacao.value === 'sustentavel') {
-        lucro += 15000;         // Economia a longo prazo
-        sustentabilidade += 20;  // Preservação de recursos hídricos
-    } else {
-        lucro -= 5000;          // Desperdício gera custos operacionais altos
-        sustentabilidade -= 10;
+    // Adiciona a pergunta do usuário na tela
+    chatBox.innerHTML += `<p><strong>Você:</strong> ${input.value}</p>`;
+    
+    // Resposta padrão caso não encontre palavra-chave
+    let respostaIA = "Interessante! Para garantir a sustentabilidade no campo, lembre-se de balancear o uso dos recursos hídricos, preferir defensivos biológicos e proteger a estrutura mecânica do solo.";
+
+    // Verificação de palavras-chave para respostas personalizadas
+    if (textoUsuario.includes("gotejamento") || textoUsuario.includes("irrigação") || textoUsuario.includes("água")) {
+        respostaIA = "O gotejamento inteligente aplica água direto na raiz da planta, reduzindo o desperdício por evaporação em até 50% comparado à aspersão comum!";
+    } else if (textoUsuario.includes("rotação") || textoUsuario.includes("solo") || textoUsuario.includes("plantio direto")) {
+        respostaIA = "A rotação de culturas e o plantio direto evitam a erosão do solo, mantêm os nutrientes ativos e diminuem a necessidade de adubos químicos pesados.";
+    } else if (textoUsuario.includes("pragas") || textoUsuario.includes("defensivos") || textoUsuario.includes("biológico")) {
+        respostaIA = "O Manejo Integrado de Pragas (MIP) utiliza predadores naturais e armadilhas tecnológicas, combatendo os insetos nocivos sem agredir polinizadores como as abelhas.";
     }
 
-    // 2. Verificação do Controle de Pragas
-    if (selectPragas.value === 'sustentavel') {
-        lucro += 10000;         // Valorização do produto limpo no mercado
-        sustentabilidade += 20;  // Proteção de polinizadores (abelhas)
-    } else {
-        lucro += 5000;          // Resultado imediato, mas esgota biodiversidade
-        sustentabilidade -= 15;
-    }
+    // Adiciona a resposta da IA simulada
+    setTimeout(() => {
+        chatBox.innerHTML += `<p style="color: #1b5e20;"><strong>Agro-IA:</strong> ${respostaIA}</p>`;
+        chatBox.scrollTop = chatBox.scrollHeight; // Rola o chat para baixo
+    }, 500);
 
-    // 3. Verificação do Manejo de Solo
-    if (selectSolo.value === 'sustentavel') {
-        lucro += 20000;         // Solo rico produz mais sacas por hectare
-        sustentabilidade += 10;  // Evita erosão e sequestra carbono
-    } else {
-        lucro -= 10000;         // Degradação gera gastos futuros com fertilizantes
-        sustentabilidade -= 15;
-    }
-
-    // Garantir limites lógicos para exibição na tela
-    if (sustentabilidade > 100) sustentabilidade = 100;
-    if (sustentabilidade < 0) sustentabilidade = 0;
-
-    // Atualização dos dados no painel visual
-    txtFinanceiro.textContent = `R$ ${lucro.toLocaleString('pt-BR')}`;
-    txtSustentavel.textContent = `${sustentabilidade}%`;
-
-    // Atualização do diagnóstico textual da banca
-    atualizarFeedback(sustentabilidade);
+    input.value = ""; // Limpa a barra de texto
 }
-
-// Função auxiliar que gera as mensagens com base no desempenho ecológico
-function atualizarFeedback(nivelSustentabilidade) {
-    if (nivelSustentabilidade >= 90) {
-        mensagemFeedback.textContent = "Excelente! Sua fazenda ating
